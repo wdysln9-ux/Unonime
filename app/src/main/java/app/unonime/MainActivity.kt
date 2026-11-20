@@ -166,9 +166,9 @@ private object AniListApi {
 
     suspend fun search(term: String): List<Anime> {
         val query = """
-            query (${' {
+            query (${'$'}search:String!) {
               Page(page:1,perPage:24) {
-                media(search:${',type:ANIME,isAdult:false,sort:SEARCH_MATCH) { $fields }
+                media(search:${'$'}search,type:ANIME,isAdult:false,sort:SEARCH_MATCH) { $fields }
               }
             }
         """.trimIndent()
@@ -184,8 +184,8 @@ private object AniListApi {
     suspend fun myList(token: String): List<Anime> {
         val viewer = viewer(token)
         val query = """
-            query (${' {
-              MediaListCollection(userId:${',type:ANIME,status_in:[CURRENT,PLANNING,COMPLETED,PAUSED,DROPPED]) {
+            query (${'$'}id:Int!) {
+              MediaListCollection(userId:${'$'}id,type:ANIME,status_in:[CURRENT,PLANNING,COMPLETED,PAUSED,DROPPED]) {
                 lists { entries { progress media { $fields } } }
               }
             }
