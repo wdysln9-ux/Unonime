@@ -1,19 +1,22 @@
 # Unonime
 
-Native Android client project aiming to reproduce the AniList mobile-web experience with Kotlin and Jetpack Compose.
+A native Android AniList client built with Kotlin and Jetpack Compose. It does not use WebView.
 
-## Project goals
+## Included
+- AniList-powered Home feed (trending, popular, top rated)
+- Anime search and detail pages
+- Native image loading and dark mobile interface
+- AniList OAuth implicit sign-in support
+- Add anime to Currently Watching and view your anime list
+- GitHub Actions debug APK build
 
-- Native Android UI (no WebView)
-- AniList GraphQL API integration
-- OAuth2 sign-in
-- High-fidelity mobile layout and interactions
-- APK builds through GitHub Actions
+## Sign in setup
+1. Open AniList Developer Settings: https://anilist.co/settings/developer
+2. Create an application and set Redirect URL to exactly `unonime://auth`.
+3. Copy its Client ID into Unonime > Profile > AniList Client ID.
+4. Tap Login with AniList.
+
+Public catalogue browsing works without signing in. Private list features require an AniList account connection.
 
 ## Build
-
-The GitHub Actions workflow builds a debug APK on pushes to `main` and can also be started manually from the Actions tab.
-
-## Status
-
-Project foundation is being set up. UI implementation and API integration will follow.
+Pushes to `main` build a debug APK. Download the `unonime-debug-apk` artifact from the successful GitHub Actions run.
